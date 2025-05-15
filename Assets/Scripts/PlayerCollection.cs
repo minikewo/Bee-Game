@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.InteropServices.ComTypes;
 using TMPro;
 using UnityEngine;
@@ -6,13 +7,30 @@ public class PlayerCollection : MonoBehaviour
 {
     private int score = 0;
     public TMP_Text scoreText;
+    private Collider2D touching;
 
-    private void OnTrggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Collectable"))
         {
-            AddScore(points: 1);
-            Destroy(other.gameObject);
+            touching = other;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other == touching)
+        {
+            touching = null;
+        }
+    }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (touching != null)
+        {
+            AddScore(1);
+                touching = null;
         }
     }
 
