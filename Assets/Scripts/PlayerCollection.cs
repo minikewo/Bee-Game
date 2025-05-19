@@ -5,38 +5,38 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerCollection : MonoBehaviour
 {
-    private int score = 0;
+    private int _score = 0;
     public TMP_Text scoreText;
-    private Collider2D touching;
+    private Collider2D _touching;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Collectable"))
         {
-            touching = other;
+            _touching = other;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other == touching)
+        if (other == _touching)
         {
-            touching = null;
+            _touching = null;
         }
     }
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if (touching != null)
+        if (_touching != null)
         {
             AddScore(1);
-                touching = null;
+                _touching = null;
         }
     }
 
     private void AddScore(int points)
     {
-        score = score + points;
-        scoreText.text = $"<b>Score:</b> {score}";
+        _score = _score + points;
+        scoreText.text = $"<b>Score:</b> {_score}";
     }
 }
