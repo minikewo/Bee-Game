@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float moveSpeed = 5f;
     private Rigidbody2D rb;
     private Vector2 moveInput;
-        
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,11 +20,12 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.linearVelocity = moveInput * moveSpeed;
     }
-    
+
     public void Move(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
-            
     }
 }
+
+
 

@@ -1,5 +1,3 @@
-using System;
-using System.Runtime.InteropServices.ComTypes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,7 +5,9 @@ public class PlayerCollection : MonoBehaviour
 {
     private int _score = 0;
     public TMP_Text scoreText;
+    public TMP_Text hiveText;
     private Collider2D _touching;
+    public ParticleSystem beeParticles;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -37,6 +37,15 @@ public class PlayerCollection : MonoBehaviour
     private void AddScore(int points)
     {
         _score = _score + points;
-        scoreText.text = $"<b>Score:</b> {_score}";
+        
+        // spawn one bee every 10 points
+        int remainder = _score % 1; // will give back the remainder of score/10
+        if (remainder == 0)
+        {
+            beeParticles.Emit(1);
+            hiveText.text = $"Hive status: {beeParticles.particleCount}";
+        }
+        
+        scoreText.text = $"<b>HONEY :</b> {_score}";
     }
 }
