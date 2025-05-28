@@ -709,7 +709,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Collect  Honey  To  Keep Your  Hive  Alive!                          5  
+  m_text: Collect  Honey  To  Keep Your  Hive  Alive!                          10  
     Honey   =    1   bee!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1321a178759a3d145bb9dbc1565b97b9, type: 2}
@@ -1190,7 +1190,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &743161829
 RectTransform:
   m_ObjectHideFlags: 0
